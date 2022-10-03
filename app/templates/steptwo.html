@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block body %}
+    {{ super() }}
+
+    <form action="{{ url_for('step_three') }}" method='POST'>
+        {{ wtf.quick_form(busbar_form, form_type='horizontal', horizontal_columns=('lg', 4, 2)) }}
+    </form>
+
+{% endblock body %}
