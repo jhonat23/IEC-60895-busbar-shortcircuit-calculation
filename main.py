@@ -1,6 +1,7 @@
 from app import create_app
 from flask import render_template, redirect, make_response
 from app.forms import SystemForm, BusbarForm, DisposalForm
+from app.operations import magnetic_mid_force
 
 app = create_app()
 
@@ -13,29 +14,30 @@ def root():
 def home():
     return render_template('index.html')
 
-@app.route('/step_one', methods=['GET', 'POST'])
-def step_one():
+@app.route('/calc', methods=['GET', 'POST'])
+def calc():
     system_form = SystemForm()
-    context = {
-        'system_form': system_form
-    }
-    return render_template('stepone.html', **context)
-
-@app.route('/step_two', methods=['GET', 'POST'])
-def step_two():
     busbar_form = BusbarForm()
-    context = {
-        'busbar_form': busbar_form
-    }
-    return render_template('steptwo.html', **context)
-
-@app.route('/step_three', methods=['GET', 'POST'])
-def step_three():
     disposal_form = DisposalForm()
     context = {
+        'system_form': system_form,
+        'busbar_form': busbar_form,
         'disposal_form': disposal_form
     }
-    return render_template('stepthree.html', **context)
+
+    if disposal_form.validate_on_submit():
+
+        current = system_form.shortcircuit_current.data
+        support_distance = disposal_form.support_distance.data
+        phase_distance = busbar_form.phase_distance.data
+
+        print(current)
+
+        result = magnetic_mid_force(current, support_distance, phase_distance)
+
+        return render_template('results.html', result=result)
+
+    return render_template('calc.html', **context)
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
