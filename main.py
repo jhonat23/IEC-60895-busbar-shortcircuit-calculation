@@ -1,6 +1,6 @@
 from app import create_app
 from flask import render_template, redirect, make_response
-from app.forms import SystemForm, BusbarForm, DisposalForm
+from app.forms import CalcForm
 from app.operations import magnetic_mid_force
 
 app = create_app()
@@ -16,24 +16,20 @@ def home():
 
 @app.route('/calc', methods=['GET', 'POST'])
 def calc():
-    system_form = SystemForm()
-    busbar_form = BusbarForm()
-    disposal_form = DisposalForm()
+    calc_form = CalcForm()
     context = {
-        'system_form': system_form,
-        'busbar_form': busbar_form,
-        'disposal_form': disposal_form
+        'calc_form': calc_form
     }
 
-    if disposal_form.validate_on_submit():
+    if calc_form.validate_on_submit():
 
-        current = system_form.shortcircuit_current.data
-        support_distance = disposal_form.support_distance.data
-        phase_distance = busbar_form.phase_distance.data
+        current = calc_form.shortcircuit_current.data
+        support_distance = calc_form.support_distance.data
+        phase_distance = calc_form.phase_distance.data
 
-        print(current)
+        print('SUBMIT DATA: ', current, support_distance, phase_distance)
 
-        result = magnetic_mid_force(current, support_distance, phase_distance)
+        result = round(magnetic_mid_force(current, support_distance, phase_distance), 2)
 
         return render_template('results.html', result=result)
 
