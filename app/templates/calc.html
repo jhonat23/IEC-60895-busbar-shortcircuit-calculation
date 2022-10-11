@@ -4,11 +4,11 @@
 {% block body %}
     {{ super() }}
 
-    <form action="{{ url_for('calc') }}" method='POST'>
+    <!--<form action="{{ url_for('results') }}" method='POST'>
         {{ wtf.quick_form(calc_form, form_type='horizontal', horizontal_columns=('lg', 4, 2)) }}
-    </form>
+    </form>-->
     
-    <!--<form action="{{ url_for('calc') }}" method="POST">
+    <form action="{{ url_for('results') }}" method="POST">
  
         <div>
             <h1>Step 1: Project data</h1>
@@ -53,6 +53,6 @@
             <h1>See the results</h1>
         </div>
         {{calc_form.submit()}}
-    </form>-->
+    </form>
 
 {% endblock body %}

@@ -1,5 +1,5 @@
 from app import create_app
-from flask import render_template, redirect, make_response
+from flask import render_template, redirect, make_response, url_for
 from app.forms import CalcForm
 from app.operations import magnetic_mid_force
 
@@ -22,23 +22,28 @@ def calc():
     }
 
     if calc_form.validate_on_submit():
-
-        current = calc_form.shortcircuit_current.data
-        support_distance = calc_form.support_distance.data
-        phase_distance = calc_form.phase_distance.data
-
-        print('SUBMIT DATA: ', current, support_distance, phase_distance)
-
-        result = round(magnetic_mid_force(current, support_distance, phase_distance), 2)
-
-        return render_template('results.html', result=result)
+        return redirect(url_for('results'))
 
     return render_template('calc.html', **context)
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
+    calc_form = CalcForm()
 
-    return render_template('results.html')
+    current = calc_form.shortcircuit_current.data
+    support_distance = calc_form.support_distance.data
+    phase_distance = calc_form.phase_distance.data
+
+    if phase_distance == 0 or phase_distance == None:
+        magnetic_force = 0
+    else:
+        magnetic_force = magnetic_mid_force(current, support_distance, phase_distance)
+
+    context = {
+        'magnetic_force': magnetic_force
+    }
+
+    return render_template('results.html', **context)
 
 if __name__ == '__main__':
     app.run(debug=True)
