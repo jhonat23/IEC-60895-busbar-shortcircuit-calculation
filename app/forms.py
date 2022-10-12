@@ -9,7 +9,7 @@ class CalcForm(FlaskForm):
     project_title = StringField('Project title', validators=[DataRequired()])
     system_voltage = SelectField('System Voltage (V)', validators=[DataRequired()], choices=['120', '220', '440', '480'], default='440')
     system_frecuency = SelectField('System frecuency (Hz)', validators=[DataRequired()], choices=['60', '50'], default='60')
-    shortcircuit_current = IntegerField('Shortcircuit current (kA)', validators=[DataRequired()], default='10000')
+    shortcircuit_current = IntegerField('Shortcircuit current (kA)', validators=[DataRequired()], default='16')
 
     # Busbar
     facing_type = SelectField('Facing type', validators=[DataRequired()], choices=['Witdh faced', 'Thickness faced'])

@@ -37,7 +37,7 @@ def results():
     if phase_distance == 0 or phase_distance == None:
         magnetic_force = 0
     else:
-        magnetic_force = magnetic_mid_force(current, support_distance, phase_distance)
+        magnetic_force = round(magnetic_mid_force(current, support_distance, phase_distance), 2)
 
     context = {
         'magnetic_force': magnetic_force

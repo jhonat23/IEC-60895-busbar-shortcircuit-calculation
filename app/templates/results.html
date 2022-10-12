@@ -4,10 +4,11 @@
 {% block body %}
     {{ super() }}
 
-    <!--<div class="media-center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/kk0feCp_MZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>-->
+    <h3>Maximun magnetic force in mid-busbar:</h3>
+    <p>{{ magnetic_force }} N</p>
 
-    <h1>{{ magnetic_force }}</h1>
+    <div class="media-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kk0feCp_MZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
 {% endblock body %}
