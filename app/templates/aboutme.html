@@ -1,0 +1,69 @@
+{% extends "bootstrap/base.html" %}
+
+{% block body %}
+
+    {% block navbar %}
+        {% include "navbar.html" %}   
+    {% endblock navbar %}
+
+    <div class="container-fluid bg-1 text-center">
+        <h3>Who Am I?</h3>
+        <img src="/static/images/CV_photo.jpg" alt="CV photo" style="width:20%" class="img-circle">
+        <h3>Jonathan Osorio</h3>
+    </div>
+
+    <div class="container-fluid bg-2 text-center">
+        <h3>About me</h3>
+        <p>I am a Backend Developer with knowledge in Python (FastAPI and Flask), MySQL, MongoDB and Firebase looking for joining new projects in ecommerce and enterprise services startups using agile methodologies like Scrum and Kanban, also interested in learning new cloud techs on Google Cloud. With experience developing tools for ecommerce companies and project management</p>
+        <a href="https://www.linkedin.com/in/jonathan-osorio-22272187/?locale=en_US" class="btn btn-default btn-lg">LinkedIn profile</a>
+    </div>
+
+    <div class="container-fluid bg-3 text-center">
+        <h3>Location</h3>
+        <p>Pereira, Risaralda, Colombia</p>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63612.75419845958!2d-75.7487812371534!3d4.804859187771445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e388748eb56c1fd%3A0x95b39410f9f1dfbc!2sPereira%2C%20Risaralda!5e0!3m2!1ses-419!2sco!4v1664325129371!5m2!1ses-419!2sco" width="400" height="350" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-2 text-center">
+    <h3>Work Experience</h3>
+    <div class="row">
+        <div class="col-sm-4">
+        <h3>Scrum advisor</h3>
+        <ul>
+            <li>Help groups of people to develop a web app based on teached contents and Scrum Metodology</li>
+            <li>Take the role of Scrum Master on each group and check the roles, artifacts and events of Scrum methodology</li>
+            <li>Report to process leader all news, issues and incidents through all project development</li>
+        </ul>
+        <img src="/static/images/Mintic.png" alt="MinTIC">
+        </div>
+        <div class="col-sm-4">
+        <h3>Python developer</h3>
+        <ul>
+            <li>Develop tools for managing business model using Python (web scrapping and API REST).</li>
+            <li>Achieve a business model for a regional technology ecommerce brand.</li>
+            <li>Formulate projects for public/private organizations in order to obtain funds and execute them.</li>
+        </ul>
+        <img src="/static/images/JJR.jpg" alt="JJR">
+        </div>
+        <div class="col-sm-4">
+        <h3>Project manager</h3>
+        <ul>
+            <li>Deploy an ERP for production plant, inventaries, cost accounting and commercial processes.</li>
+            <li>Create the I+D+i management system according to sustainability and growth policies.</li>
+            <li>Manage I+D+i, productive, photovoltaic and LV/MV projects using PMI and agile methods.</li>
+        </ul>
+        <img src="/static/images/gl_ingenieros32.jpg" alt="GL">
+        </div>
+    </div>
+    </div>
+
+    <div class="container-fluid bg-2 text-center">
+        <h3>Contact me</h3>
+        <a href="https://www.linkedin.com/in/jonathan-osorio-22272187/?locale=en_US" class="btn btn-default btn-lg">LinkedIn profile</a>
+        <a href="https://github.com/jhonat23" class="btn btn-default btn-lg">GitHub Profile</a>
+        <a href="https://wa.me/573007270108" class="btn btn-default btn-lg">Whatsapp</a>
+    </div>
+
+{% endblock body %}

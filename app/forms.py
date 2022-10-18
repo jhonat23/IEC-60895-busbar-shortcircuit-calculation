@@ -18,6 +18,6 @@ class CalcForm(FlaskForm):
     phase_distance = IntegerField('Phase distance a (mm)', validators=[DataRequired()], default='0')
 
     # Disposal
-    span_number = SelectField('Number of spans', validators=[DataRequired()], choices=['1', '2', '3 o more'])
+    span_number = SelectField('Number of spans', validators=[DataRequired()], choices=['1', '2', '3 or more'])
     support_distance = IntegerField('Support distance (mm)', validators=[DataRequired()], default='0')
     submit = SubmitField('Show results')
