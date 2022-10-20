@@ -5,10 +5,11 @@ from sympy import *
 PI = pi # 3.1415...
 Uo = 4 * PI * (10)**-7 # Vacuum permeability (H/m)
 k = 1.35 # Value from R/X=0.3 relation in 4.3.1 of IEC 60909
-q = 1.5 # Plasticity factor
-CuR02 = 69 # MPa elastic limit for cooper 
+q = 1.5 # Plasticity factor for rectangular busbars
+CuR02 = 180 # MPa, elastic limit for cooper 
 
-# Calculate k1s factor
+# Internal functions
+
 def _k1s(busbar_width: int, busbar_thickness: int, phase_distance: int) -> float:
 
     """Returns factor k1s required for find equivalent phase distance. NOTE: the equation given from
@@ -46,7 +47,7 @@ def _k1s(busbar_width: int, busbar_thickness: int, phase_distance: int) -> float
 
     return ka
 
-def _span_factor(number_of_spans: int) -> float:
+def _span_factor(number_of_spans: str) -> dict:
     """Returns a span factor depending of the number of spans of arrangement"""
 
     span_factors = {'alfa': {'A': 0, 'B':0}, 'beta': 0, 'gamma': 0}
@@ -69,6 +70,18 @@ def _span_factor(number_of_spans: int) -> float:
 
     return span_factors
 
+def _Vf_Vr(mech_stress: float, R02: int) -> float:
+    """Returns factor VfxVf related with supports flexural strength"""
+
+    factor = mech_stress / (0.8 * R02)
+
+    if factor <= 0.37 and factor > 0:
+        return 2.7
+    elif factor > 0.37 and factor <= 1.0:
+        return 1 / factor
+    elif factor > 1.0:
+        return 1.0
+
 
 # Functions
 def magnetic_mid_force(current: int, support_distance: int, phase_distance: int) -> float:
@@ -79,7 +92,7 @@ def magnetic_mid_force(current: int, support_distance: int, phase_distance: int)
 
     return mf
 
-def mechanical_stress(magnetic_force: float, support_distance: int, busbar_width: int, busbar_thickness: int, span_number) -> float:
+def mechanical_stress(magnetic_force: float, support_distance: int, busbar_width: int, busbar_thickness: int, span_number: str) -> float:
     """Calculates the busbar maximum mechanical stress. If mechanical stress is XXXXX the busbar arrangement cannot be installed"""
 
     span_factors = _span_factor(span_number)
@@ -95,6 +108,19 @@ def elastic_limit(mechanical_stress: float) -> str:
         return 'The busbar arrange can resist the shortcircuit'
     else:
         return 'The busbar arrange cannot resist the shortcircuit'
+
+def support_flexural_strength(mech_stress: float, span_number: str, magnetic_force: float) -> dict:
+    """Returns the support flexural strength of external and internal supports of busbar arrangement"""
+
+    supports_flex_strength = {}
+
+    VfxVr = _Vf_Vr(mech_stress, CuR02)
+    span_factors = _span_factor(span_number)
+
+    supports_flex_strength['FdA'] = VfxVr * span_factors['alfa']['A'] * magnetic_force
+    supports_flex_strength['FdB'] = VfxVr * span_factors['alfa']['B'] * magnetic_force
+
+    return supports_flex_strength
 
 if __name__ == '__main__':
     r = magnetic_mid_force(16, 1000, 200)
