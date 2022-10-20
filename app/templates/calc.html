@@ -9,46 +9,69 @@
     </form>-->
     
     <form action="{{ url_for('results') }}" method="POST">
- 
-        <div>
-            <h1>Step 1: Project data</h1>
 
-            {{calc_form.project_title.label()}}
-            {{calc_form.project_title()}}
-
-            {{calc_form.system_voltage.label()}}
-            {{calc_form.system_voltage()}}
-
-            {{calc_form.system_frecuency.label()}}
-            {{calc_form.system_frecuency()}}
-
-            {{calc_form.shortcircuit_current.label()}}
-            {{calc_form.shortcircuit_current()}}
-        </div>
-        <div>
-            <h1>Step 2: Busbar data</h1>
-
-            {{calc_form.facing_type.label()}}
-            {{calc_form.facing_type()}}
-
-            {{calc_form.busbar_width.label()}}
-            {{calc_form.busbar_width()}}
-
-            {{calc_form.busbar_thickness.label()}}
-            {{calc_form.busbar_thickness()}}
-
-            {{calc_form.phase_distance.label()}}
-            {{calc_form.phase_distance()}}
-        </div>
-        <div>
-            <h1>Step 3: Disposal data</h1>
-
-            {{calc_form.span_number.label()}}
-            {{calc_form.span_number()}}
+        <h1 class="titles">Step 1: Project data</h1>
+        <div class="step">
             
-            {{calc_form.support_distance.label()}}
-            {{calc_form.support_distance()}}
+            <div class="infoStep">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
+            </div>
+
+            <div class="dataStep">
+                {{calc_form.project_title.label()}}
+                {{calc_form.project_title()}}
+
+                {{calc_form.system_voltage.label()}}
+                {{calc_form.system_voltage()}}
+
+                {{calc_form.system_frecuency.label()}}
+                {{calc_form.system_frecuency()}}
+
+                {{calc_form.shortcircuit_current.label()}}
+                {{calc_form.shortcircuit_current()}}
+            </div>
+
         </div>
+
+        <h1 class="titles">Step 2: Busbar data</h1>
+        <div class="step">
+            
+            <div class="infoStep">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
+            </div>
+
+            <div class="dataStep">
+                {{calc_form.facing_type.label()}}
+                {{calc_form.facing_type()}}
+
+                {{calc_form.busbar_width.label()}}
+                {{calc_form.busbar_width()}}
+
+                {{calc_form.busbar_thickness.label()}}
+                {{calc_form.busbar_thickness()}}
+
+                {{calc_form.phase_distance.label()}}
+                {{calc_form.phase_distance()}}
+            </div>
+
+        </div>
+
+        <h1 class="titles">Step 3: Disposal data</h1>
+        <div class="step">
+            
+            <div class="infoStep">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
+            </div>
+
+            <div class="dataStep">
+                {{calc_form.span_number.label()}}
+                {{calc_form.span_number()}}
+                
+                {{calc_form.support_distance.label()}}
+                {{calc_form.support_distance()}}
+            </div>
+        </div>
+
         <div>
             <h1>See the results</h1>
         </div>
