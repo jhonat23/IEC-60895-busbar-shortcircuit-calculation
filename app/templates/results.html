@@ -1,25 +1,25 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block body %}
     {{ super() }}
+    <div class="results">
+        <h3>Maximun magnetic force in mid-busbar: {{ magnetic_force }} N</h3>
+        <img src="{{ url_for('static', filename='images/magnetic_force.jpg') }}" alt="Magnetic force">
 
-    <h3>Maximun magnetic force in mid-busbar:</h3>
-    <p>{{ magnetic_force }} N</p>
+        <h3>Mechanical stress on busbars: {{ mech_stress }} N/mm^2</h3>
+        <img src="{{ url_for('static', filename='images/mechanical_stress.jpg') }}" alt="Mechanical stress">
 
-    <h3>Mechanical stress on busbars</h3>
-    <p> {{ mech_stress }} N/mm^2</p>
+        <h3> {{ is_busbar_ok }} </h3>
+        <img src="{{ url_for('static', filename='images/elastic_limit.jpg') }}" alt="Elastic limit">
 
-    <h3> {{ is_busbar_ok }} </h3>
+        <h3>Mechanical strength on supports</h3>
+        <img src="{{ url_for('static', filename='images/support_strength.jpg') }}" alt="Support strength">
+        <h3>Internal supports strength: {{ on_support_strength_B }} N</h3>
+        <h3>External supports strength: {{ on_support_strength_A }} N</h3>
 
-    <h3>Mechanical strength on supports</h3>
-    <h3>Internal supports strength</h3>
-    <p> {{ on_support_strength_B }} N</p>
-    <h3>External supports strength</h3>
-    <p> {{ on_support_strength_A }} N</p>
-
-    <div class="media-center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/kk0feCp_MZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="media-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kk0feCp_MZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
 
 {% endblock body %}

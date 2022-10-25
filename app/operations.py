@@ -105,9 +105,9 @@ def elastic_limit(mechanical_stress: float) -> str:
     limit = q * CuR02
 
     if mechanical_stress <= limit:
-        return 'The busbar arrange can resist the shortcircuit'
+        return 'THE BUSBAR ARRANGE CAN RESIST THE SHORTCIRCUIT'
     else:
-        return 'The busbar arrange cannot resist the shortcircuit'
+        return 'THE BUSBAR ARRANGE CAN NOT RESIST THE SHORTCIRCUIT'
 
 def support_flexural_strength(mech_stress: float, span_number: str, magnetic_force: float) -> dict:
     """Returns the support flexural strength of external and internal supports of busbar arrangement"""

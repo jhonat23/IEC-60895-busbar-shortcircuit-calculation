@@ -10,6 +10,10 @@ def root():
     response = make_response(redirect('/home'))
     return response
 
+@app.route('/intro')
+def intro():
+    return render_template('intro.html')
+
 @app.route('/home')
 def home():
     return render_template('index.html')

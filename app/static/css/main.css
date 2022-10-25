@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+.parag {
+    text-align: center;
+    font-size: large;
+}
+
 .step {
     /* Arriba | Derecha | Abajo | Izquierda */
     margin: 20px 0 0 0;
@@ -19,4 +24,8 @@
     display: flex;
     flex-direction: column;
     margin: 0 20% 0 100px;
+}
+
+.results {
+    text-align: center;
 }
