@@ -12,12 +12,12 @@ class CalcForm(FlaskForm):
     shortcircuit_current = IntegerField('Shortcircuit current (kA)', validators=[DataRequired()], default='16')
 
     # Busbar
-    facing_type = SelectField('Facing type', validators=[DataRequired()], choices=['Witdh faced', 'Thickness faced'])
-    busbar_width = IntegerField('Busbar width w (mm)', validators=[DataRequired()], default='0')
-    busbar_thickness = IntegerField('Busbar thickness t (mm)', validators=[DataRequired()], default='0')
+    facing_type = SelectField('Facing type', validators=[DataRequired()], choices=['N/A', 'Witdh faced', 'Thickness faced'])
+    busbar_width = IntegerField('Busbar width b (mm)', validators=[DataRequired()], default='0')
+    busbar_thickness = IntegerField('Busbar thickness d (mm)', validators=[DataRequired()], default='0')
     phase_distance = IntegerField('Phase distance a (mm)', validators=[DataRequired()], default='0')
 
     # Disposal
     span_number = SelectField('Number of spans', validators=[DataRequired()], choices=['1', '2', '3 or more'])
-    support_distance = IntegerField('Support distance (mm)', validators=[DataRequired()], default='0')
+    support_distance = IntegerField('Support distance L (mm)', validators=[DataRequired()], default='0')
     submit = SubmitField('Show results')

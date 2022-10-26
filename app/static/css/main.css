@@ -7,6 +7,12 @@
     font-size: large;
 }
 
+.parag1 {
+    text-align: center;
+    font-size: large;
+    margin: 10px 0 0 0;
+}
+
 .step {
     /* Arriba | Derecha | Abajo | Izquierda */
     margin: 20px 0 0 0;
@@ -28,4 +34,9 @@
 
 .results {
     text-align: center;
+}
+
+.eq_variables {
+    display: flex;
+    justify-content: center;
 }

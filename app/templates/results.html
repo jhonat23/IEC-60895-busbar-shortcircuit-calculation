@@ -3,23 +3,71 @@
 {% block body %}
     {{ super() }}
     <div class="results">
+        <div>
         <h3>Maximun magnetic force in mid-busbar: {{ magnetic_force }} N</h3>
-        <img src="{{ url_for('static', filename='images/magnetic_force.jpg') }}" alt="Magnetic force">
-
-        <h3>Mechanical stress on busbars: {{ mech_stress }} N/mm^2</h3>
-        <img src="{{ url_for('static', filename='images/mechanical_stress.jpg') }}" alt="Mechanical stress">
-
-        <h3> {{ is_busbar_ok }} </h3>
-        <img src="{{ url_for('static', filename='images/elastic_limit.jpg') }}" alt="Elastic limit">
-
-        <h3>Mechanical strength on supports</h3>
-        <img src="{{ url_for('static', filename='images/support_strength.jpg') }}" alt="Support strength">
-        <h3>Internal supports strength: {{ on_support_strength_B }} N</h3>
-        <h3>External supports strength: {{ on_support_strength_A }} N</h3>
-
-        <div class="media-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/kk0feCp_MZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div>
+            <img src="{{ url_for('static', filename='images/magnetic_force.jpg') }}" alt="Magnetic force">
+            <div class="eq_variables">
+                <span class="parag1">Where:</span>
+                <ul>
+                    <li>Uo: vacuum permeability</li>
+                    <li>ip3: peak three-phase shortcircuit current </li>
+                    <li>l: support distance</li>
+                    <li>am: equivalent distance between phases</li>
+                </ul>
+            </div>
         </div>
+        </div>
+
+        <div>
+            <h3>Mechanical stress on busbars: {{ mech_stress }} N/mm^2</h3>
+            <div>            
+            <img src="{{ url_for('static', filename='images/mechanical_stress.jpg') }}" alt="Mechanical stress">
+            <div class="eq_variables">
+                <span class="parag1">Where:</span>
+                <ul>
+                    <li>Vσ, Vr: dynamic/static stress factor </li>
+                    <li>β: internal span factor</li>
+                    <li>l: support distance</li>
+                    <li>Z: Section modulus of busbar</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+        
+        <div>
+            <h3>CAN THE BUSBAR ARRANGE RESIST THE SHORTCIRCUIT?</h3>
+            <h3> {{ is_busbar_ok }} </h3>
+            <img src="{{ url_for('static', filename='images/elastic_limit.jpg') }}" alt="Elastic limit">
+            <div class="eq_variables">
+                <span class="parag1">Where:</span>
+                <ul>
+                    <li>q: plasticity factor (1.5 for rectangular busbars)</li>
+                    <li>R02: elastic limit of cooper</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3>Mechanical strength on supports</h3>
+            <img src="{{ url_for('static', filename='images/support_strength.jpg') }}" alt="Support strength">
+            <div class="eq_variables">
+                <span class="parag1">Where:</span>
+                <ul>
+                    <li>Vf, Vr: dinamyc/static support stregnth factor</li>
+                    <li>α: external span factor</li>
+                    <li>Fm: Maximun magnetic force in mid-busbar</li>
+                </ul>
+            </div>
+            <h3>Internal supports strength: {{ on_support_strength_B }} N</h3>
+            <h3>External supports strength: {{ on_support_strength_A }} N</h3>
+        </div>
+
+    <form action="{{ url_for('calc') }}">
+        <button type="submit">Calculate other case</button>
+    </form>
+
     </div>
 
 {% endblock body %}

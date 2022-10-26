@@ -14,8 +14,10 @@
         <div class="step">
             
             <div class="infoStep">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
-                <img src="{{ url_for('static', filename='images/LV-Switchgear.jpg') }}" alt="Project-info">
+                <p class="parag">Set in this step the general info about your project. The required shortcircuit current is the three-phase initial symmetrical shortcircuit current in kA (RMS value) and must be calculated or selected from circuit breaker Icw (IEC61439)</p>
+                <div class="parag">
+                    <img src="{{ url_for('static', filename='images/LV-Switchgear.jpg') }}" alt="Project-info">
+                </div>
             </div>
 
             <div class="dataStep">
@@ -38,8 +40,10 @@
         <div class="step">
             
             <div class="infoStep">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
-                <img src="{{ url_for('static', filename='images/busbar_distances.jpg') }}" alt="busbar_distances.jpg">
+                <p class="parag">Set in this step the busbar arrangement info. When facing type is selected with different value of "N/A" the values of witdh and thickness are swapped. In the other case, the busbar arrangement is shown like in the image below</p>
+                <div class="parag">
+                    <img src="{{ url_for('static', filename='images/busbar_distances.jpg') }}" alt="busbar_distances.jpg">
+                </div>
             </div>
 
             <div class="dataStep">
@@ -62,8 +66,11 @@
         <div class="step">
             
             <div class="infoStep">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis eligendi repudiandae ut magni voluptates eius a non eos sapiente dignissimos ratione est ab, dolore facilis totam fugit dolores perspiciatis harum.</p>
-                <img src="{{ url_for('static', filename='images/busbar_disposal.jpg') }}" alt="busbar_disposal.jpg">
+                <p class="parag">Here you can set the number of spans and fixed support distance.</p>
+                <div class="parag">
+                    <img src="{{ url_for('static', filename='images/busbar_disposal.jpg') }}" alt="busbar_disposal.jpg">
+                </div>
+                
             </div>
 
             <div class="dataStep">

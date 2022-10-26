@@ -47,6 +47,7 @@ def results():
         mech_stress = 0
         on_support_strength_A = 0
         on_support_strength_B = 0
+        is_busbar_ok = 'N/A'
     else:
         magnetic_force = round(magnetic_mid_force(current, support_distance, phase_distance), 2)
         mech_stress = round(mechanical_stress(magnetic_force, support_distance, busbar_width, busbar_thickness, span_number), 2)
@@ -55,7 +56,7 @@ def results():
         on_support_strength_A = round(on_support_strength['FdA'], 2)
         on_support_strength_B = round(on_support_strength['FdB'], 2)
 
-    is_busbar_ok = elastic_limit(mech_stress)
+        is_busbar_ok = elastic_limit(mech_stress)
 
     # print('spans', span_number)
     # print('estres mecánico: ', mech_stress)

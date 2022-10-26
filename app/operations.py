@@ -71,7 +71,7 @@ def _span_factor(number_of_spans: str) -> dict:
     return span_factors
 
 def _Vf_Vr(mech_stress: float, R02: int) -> float:
-    """Returns factor VfxVf related with supports flexural strength"""
+    """Returns factor VfxVr related with supports flexural strength"""
 
     factor = mech_stress / (0.8 * R02)
 
@@ -105,9 +105,9 @@ def elastic_limit(mechanical_stress: float) -> str:
     limit = q * CuR02
 
     if mechanical_stress <= limit:
-        return 'THE BUSBAR ARRANGE CAN RESIST THE SHORTCIRCUIT'
+        return 'YES'
     else:
-        return 'THE BUSBAR ARRANGE CAN NOT RESIST THE SHORTCIRCUIT'
+        return 'NO, CHECK THE BUSBAR DESING'
 
 def support_flexural_strength(mech_stress: float, span_number: str, magnetic_force: float) -> dict:
     """Returns the support flexural strength of external and internal supports of busbar arrangement"""
