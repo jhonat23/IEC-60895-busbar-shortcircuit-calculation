@@ -88,7 +88,7 @@ def magnetic_mid_force(current: int, support_distance: int, phase_distance: int)
     """Calculates de the maximum theoric magnetic force on mid busbar on 3-phase shortcircuit"""
 
     # Magnetic force calculation
-    mf = (Uo / (2 * PI)) * (sqrt(3) / 2) * (current * 1000 * k * sqrt(2))**2 * (support_distance / phase_distance)
+    mf = round((Uo / (2 * PI)) * (sqrt(3) / 2) * (current * 1000 * k * sqrt(2))**2 * (support_distance / phase_distance), 2)
 
     return mf
 
@@ -96,7 +96,7 @@ def mechanical_stress(magnetic_force: float, support_distance: int, busbar_width
     """Calculates the busbar maximum mechanical stress. If mechanical stress is XXXXX the busbar arrangement cannot be installed"""
 
     span_factors = _span_factor(span_number)
-    ms = span_factors['beta'] * ((magnetic_force * support_distance) / (8 * ((2 * (busbar_width * busbar_thickness**3) / 12) / busbar_thickness)))
+    ms = round(span_factors['beta'] * ((magnetic_force * support_distance) / (8 * ((2 * (busbar_width * busbar_thickness**3) / 12) / busbar_thickness))), 2)
 
     return ms
 

@@ -49,8 +49,8 @@ def results():
         on_support_strength_B = 0
         is_busbar_ok = 'N/A'
     else:
-        magnetic_force = round(magnetic_mid_force(current, support_distance, phase_distance), 2)
-        mech_stress = round(mechanical_stress(magnetic_force, support_distance, busbar_width, busbar_thickness, span_number), 2)
+        magnetic_force = magnetic_mid_force(current, support_distance, phase_distance)
+        mech_stress = mechanical_stress(magnetic_force, support_distance, busbar_width, busbar_thickness, span_number)
         on_support_strength = support_flexural_strength(mech_stress, span_number, magnetic_force)
 
         on_support_strength_A = round(on_support_strength['FdA'], 2)
