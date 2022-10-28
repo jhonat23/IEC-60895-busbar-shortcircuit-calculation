@@ -1,5 +1,4 @@
 from math import pi, sqrt, log, atan
-from sympy import *
 
 # Constants
 PI = pi # 3.1415...
@@ -130,7 +129,9 @@ if __name__ == '__main__':
     print(round(r, 2), round(m, 2))
 
 
-    #testing sympy:
+    #-----------------------------------------------
+
+    #testing sympy (PLEASE IF YOU WANT TO CHECK THE EQUATION, PLEASE INSTALL sympy AND IMPORT MODULE HERE)
 
     # ad, bd, adbd = symbols('ad bd adbd')
     # init_printing(use_unicode=True)
