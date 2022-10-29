@@ -7,16 +7,12 @@ app = create_app()
 
 @app.route('/')
 def root():
-    response = make_response(redirect('/home'))
+    response = make_response(redirect('/intro'))
     return response
 
 @app.route('/intro')
 def intro():
     return render_template('intro.html')
-
-@app.route('/home')
-def home():
-    return render_template('index.html')
 
 @app.route('/calc', methods=['GET', 'POST'])
 def calc():
@@ -71,9 +67,13 @@ def results():
 
     return render_template('results.html', **context)
 
+@app.route('/aboutapp')
+def about_app():
+    return render_template('aboutapp.html')
+
 @app.route('/about/me')
 def about_me():
     return render_template('aboutme.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -1,3 +1,10 @@
+/* Arriba | Derecha | Abajo | Izquierda */
+.main {
+    background-color: #D3E9E0;
+    margin: 0 15% 0 15%;
+    padding: 10px 5% 10px 5%;
+}
+
 .titles {
     text-align: center;
 }
@@ -14,7 +21,6 @@
 }
 
 .step {
-    /* Arriba | Derecha | Abajo | Izquierda */
     margin: 20px 0 0 0;
     display: flex;
     flex-direction: row;
@@ -23,13 +29,13 @@
 }
 
 .infoStep {
-    margin: 0 5% 10px 20%;
+    margin: 0 10px 10px 2%;
 }
 
 .dataStep {
     display: flex;
     flex-direction: column;
-    margin: 0 20% 0 100px;
+    margin: 0 2% 0 10px;
 }
 
 .results {

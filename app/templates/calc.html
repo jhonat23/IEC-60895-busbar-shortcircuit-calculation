@@ -8,85 +8,92 @@
         {{ wtf.quick_form(calc_form, form_type='horizontal', horizontal_columns=('lg', 4, 2)) }}
     </form>-->
     
-    <form action="{{ url_for('results') }}" method="POST">
+    <div class="main"> 
 
-        <h1 class="titles">Step 1: Project data</h1>
-        <div class="step">
-            
-            <div class="infoStep">
-                <p class="parag">Set in this step the general info about your project. The required shortcircuit current is the three-phase initial symmetrical shortcircuit current in kA (RMS value) and must be calculated or selected from circuit breaker Icw (IEC61439)</p>
-                <div class="parag">
-                    <img src="{{ url_for('static', filename='images/LV-Switchgear.jpg') }}" alt="Project-info">
-                </div>
-            </div>
+        <form action="{{ url_for('results') }}" method="POST">
 
-            <div class="dataStep">
-                {{calc_form.project_title.label()}}
-                {{calc_form.project_title()}}
-
-                {{calc_form.system_voltage.label()}}
-                {{calc_form.system_voltage()}}
-
-                {{calc_form.system_frecuency.label()}}
-                {{calc_form.system_frecuency()}}
-
-                {{calc_form.shortcircuit_current.label()}}
-                {{calc_form.shortcircuit_current()}}
-            </div>
-
-        </div>
-
-        <h1 class="titles">Step 2: Busbar data</h1>
-        <div class="step">
-            
-            <div class="infoStep">
-                <p class="parag">Set in this step the busbar arrangement info. When facing type is selected with different value of "N/A" the values of witdh and thickness are swapped. In the other case, the busbar arrangement is shown like in the image below</p>
-                <div class="parag">
-                    <img src="{{ url_for('static', filename='images/busbar_distances.jpg') }}" alt="busbar_distances.jpg">
-                </div>
-            </div>
-
-            <div class="dataStep">
-                {{calc_form.facing_type.label()}}
-                {{calc_form.facing_type()}}
-
-                {{calc_form.busbar_width.label()}}
-                {{calc_form.busbar_width()}}
-
-                {{calc_form.busbar_thickness.label()}}
-                {{calc_form.busbar_thickness()}}
-
-                {{calc_form.phase_distance.label()}}
-                {{calc_form.phase_distance()}}
-            </div>
-
-        </div>
-
-        <h1 class="titles">Step 3: Disposal data</h1>
-        <div class="step">
-            
-            <div class="infoStep">
-                <p class="parag">Here you can set the number of spans and fixed support distance.</p>
-                <div class="parag">
-                    <img src="{{ url_for('static', filename='images/busbar_disposal.jpg') }}" alt="busbar_disposal.jpg">
-                </div>
+            <h1 class="titles">Step 1: Project data</h1>
+            <div class="step">
                 
+                <div class="infoStep">
+                    <p class="parag">Set in this step the general info about your project. The required shortcircuit current is the three-phase initial symmetrical shortcircuit current in kA (RMS value) and must be calculated or selected from circuit breaker Icw (IEC61439)</p>
+                    <div class="parag">
+                        <img src="{{ url_for('static', filename='images/LV-Switchgear.jpg') }}" alt="Project-info">
+                    </div>
+                </div>
+
+                <div class="dataStep">
+                    {{calc_form.project_title.label()}}
+                    {{calc_form.project_title()}}
+
+                    {{calc_form.system_voltage.label()}}
+                    {{calc_form.system_voltage()}}
+
+                    {{calc_form.system_frecuency.label()}}
+                    {{calc_form.system_frecuency()}}
+
+                    {{calc_form.shortcircuit_current.label()}}
+                    {{calc_form.shortcircuit_current()}}
+                </div>
+
             </div>
 
-            <div class="dataStep">
-                {{calc_form.span_number.label()}}
-                {{calc_form.span_number()}}
+            <h1 class="titles">Step 2: Busbar data</h1>
+            <div class="step">
                 
-                {{calc_form.support_distance.label()}}
-                {{calc_form.support_distance()}}
-            </div>
-        </div>
+                <div class="infoStep">
+                    <p class="parag">Set in this step the busbar arrangement info. When facing type is selected with different value of "N/A" the values of witdh and thickness are swapped. In the other case, the busbar arrangement is shown like in the image below</p>
+                    <div class="parag">
+                        <img src="{{ url_for('static', filename='images/busbar_distances.jpg') }}" alt="busbar_distances.jpg">
+                    </div>
+                </div>
 
-        <div>
-            <h1 class="titles">See the results</h1>
-        </div>
-        <div class="titles">{{calc_form.submit()}}</div>
-        
-    </form>
+                <div class="dataStep">
+                    {{calc_form.facing_type.label()}}
+                    {{calc_form.facing_type()}}
+
+                    {{calc_form.busbar_width.label()}}
+                    {{calc_form.busbar_width()}}
+
+                    {{calc_form.busbar_thickness.label()}}
+                    {{calc_form.busbar_thickness()}}
+
+                    {{calc_form.phase_distance.label()}}
+                    {{calc_form.phase_distance()}}
+                </div>
+
+            </div>
+
+            <h1 class="titles">Step 3: Disposal data</h1>
+            <div class="step">
+                
+                <div class="infoStep">
+                    <p class="parag">Here you can set the number of spans and fixed support distance.</p>
+                    <div class="parag">
+                        <img src="{{ url_for('static', filename='images/busbar_disposal.jpg') }}" alt="busbar_disposal.jpg">
+                    </div>
+                    
+                </div>
+
+                <div class="dataStep">
+                    {{calc_form.span_number.label()}}
+                    {{calc_form.span_number()}}
+                    
+                    {{calc_form.support_distance.label()}}
+                    {{calc_form.support_distance()}}
+                </div>
+            </div>
+
+            <div>
+                <h1 class="titles">See the results</h1>
+            </div>
+            <div class="titles">{{calc_form.submit()}}</div>
+            
+            <br>
+            <br>
+
+        </form>
+
+    </div>
 
 {% endblock body %}

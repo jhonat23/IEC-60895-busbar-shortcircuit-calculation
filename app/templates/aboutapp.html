@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {{ super() }}
+
+    <div class="main">
+    <div class="jumbotron titles">
+        <h1 class='cen'>About this app</h1>
+        <div>
+            <p>This app is developed for work and educational purposes, it offers a tool for calculate mechanical stress in busbar arrangement on swithcgears and controlgrears based on IEC standars. If you want to know more about this project you can check it on GitHub (link below) and share suggestions. This project will be changing over time adding new features and technologies, also will be deploying on several web services like render, google cloud (App Engine), GitHub pages and others. Please feel free to share your issues sending a email to joosorio@utp.edu.co</p>
+            <h2 class='cen'>Tools on this project:</h2>
+            <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">Programming Language</th>
+                    <td>Python</td>
+                    <td>3.8.10</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Framework</th>
+                    <td>Flask</td>
+                    <td>2.2.2</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Toolkit</th>
+                    <td>WTForms</td>
+                    <td>1.0.1</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">WSGI HTTP Server</th>
+                    <td>Gunicorn</td>
+                    <td>20.1</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">No Relational Database</th>
+                    <td>Mongo (will be added soon)</td>
+                    <td>6</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Toolkit</th>
+                    <td>ReportLab (will be added soon)</td>
+                    <td>3.1.6</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div>
+                <p class='cen'><a class="btn btn-primary btn-lg" href="https://github.com/jhonat23/IEC-60895-busbar-shortcircuit-calculation" role="button">GitHub Repo</a></p>
+            </div>
+            <div>
+                <img class='titles' src="{{ url_for('static', filename='images/switchgear1.jpg') }}" alt="switchegar" style="width:100%">
+            </div>
+        </div>
+    </div>
+    </div>
+    
+{% endblock body %}

@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
     #-----------------------------------------------
 
-    #testing sympy (PLEASE IF YOU WANT TO CHECK THE EQUATION, PLEASE INSTALL sympy AND IMPORT MODULE HERE)
+    #testing sympy (PLEASE IF YOU WANT TO CHECK THE EQUATION, PLEASE INSTALL sympy AND IMPORT MODULE HERE, IT IS POSSIBLE THAT APP DOES NOT WORK DUE A CONFLICT WITH MODULES DATA TYPE USING sympy)
 
     # ad, bd, adbd = symbols('ad bd adbd')
     # init_printing(use_unicode=True)
