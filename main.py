@@ -1,7 +1,7 @@
 from app import create_app
 from flask import render_template, redirect, make_response, url_for
 from app.forms import CalcForm
-from app.operations import magnetic_mid_force, mechanical_stress, elastic_limit, support_flexural_strength
+from app.operations import magnetic_mid_force, face_type, mechanical_stress, elastic_limit, support_flexural_strength
 
 app = create_app()
 
@@ -34,8 +34,9 @@ def results():
     current = calc_form.shortcircuit_current.data
     support_distance = calc_form.support_distance.data
     phase_distance = calc_form.phase_distance.data
-    busbar_width = calc_form.busbar_width.data
-    busbar_thickness = calc_form.busbar_thickness.data
+    busbar_width, busbar_thickness = face_type(calc_form.facing_type.data, calc_form.busbar_width.data, calc_form.busbar_thickness.data)
+    # busbar_width = calc_form.busbar_width.data
+    # busbar_thickness = calc_form.busbar_thickness.data
     span_number = calc_form.span_number.data
 
     if not project_title:
