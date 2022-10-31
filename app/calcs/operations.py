@@ -85,11 +85,14 @@ def _Vf_Vr(mech_stress: float, R02: int) -> float:
 def face_type(facing_type: str, busbar_width: int, busbar_thickness: int) -> tuple:
     """Returns a tuple of busbar width and thickness depending of facing type"""
 
-    if facing_type == 'Witdh faced' or facing_type == 'N/A':
-        return busbar_width, busbar_thickness
-    elif facing_type == 'Thickness faced':
-        busbar_width, busbar_thickness = busbar_thickness, busbar_width
-        return busbar_width, busbar_thickness
+    if busbar_width and busbar_width is not None:
+        if facing_type == 'Witdh faced' or facing_type == 'N/A':
+            return busbar_width, busbar_thickness
+        elif facing_type == 'Thickness faced':
+            busbar_width, busbar_thickness = busbar_thickness, busbar_width
+            return busbar_width, busbar_thickness
+    else:
+        return 0, 0
 
 def magnetic_mid_force(current: int, support_distance: int, phase_distance: int) -> float:
     """Calculates de the maximum theoric magnetic force on mid busbar on 3-phase shortcircuit"""
