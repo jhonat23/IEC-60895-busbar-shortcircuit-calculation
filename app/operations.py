@@ -136,9 +136,6 @@ if __name__ == '__main__':
     #m = mechanical_stress(r, 1000, 60, 10)
     print(round(r, 2))
 
-    assert 3 == 2
-
-
     #-----------------------------------------------
 
     #testing sympy (PLEASE IF YOU WANT TO CHECK THE EQUATION, PLEASE INSTALL sympy AND IMPORT MODULE HERE, IT IS POSSIBLE THAT APP DOES NOT WORK DUE A CONFLICT WITH MODULES DATA TYPE USING sympy)
