@@ -133,8 +133,10 @@ def support_flexural_strength(mech_stress: float, span_number: str, magnetic_for
 
 if __name__ == '__main__':
     r = magnetic_mid_force(16, 1000, 200)
-    m = mechanical_stress(r, 1000, 60, 10)
-    print(round(r, 2), round(m, 2))
+    #m = mechanical_stress(r, 1000, 60, 10)
+    print(round(r, 2))
+
+    assert 3 == 2
 
 
     #-----------------------------------------------
@@ -171,4 +173,3 @@ if __name__ == '__main__':
     # kb = ka.subs([(ad, 20), (bd, 6), (adbd, 3.34)])
     # print(kb)
     # print(kb.evalf())
-    
