@@ -3,16 +3,6 @@ from flask import render_template, redirect, make_response, url_for
 from .forms import CalcForm
 from .operations import magnetic_mid_force, face_type, mechanical_stress, elastic_limit, support_flexural_strength
 
-
-@calcs.route('/')
-def root():
-    response = make_response(redirect('/intro'))
-    return response
-
-@calcs.route('/intro')
-def intro():
-    return render_template('intro.html')
-
 @calcs.route('/calc', methods=['GET', 'POST'])
 def calc():
     calc_form = CalcForm()
@@ -66,11 +56,3 @@ def results():
     }
 
     return render_template('results.html', **context)
-
-@calcs.route('/aboutapp')
-def about_app():
-    return render_template('aboutapp.html')
-
-@calcs.route('/about/me')
-def about_me():
-    return render_template('aboutme.html')
