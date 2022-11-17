@@ -1,7 +1,10 @@
 from . import calcs
-from flask import render_template, redirect, make_response, url_for
+from flask import render_template, redirect, make_response, url_for, request
 from .forms import CalcForm
 from .operations import magnetic_mid_force, face_type, mechanical_stress, elastic_limit, support_flexural_strength
+
+# Global variable used to save context values
+context_values = []
 
 @calcs.route('/calc', methods=['GET', 'POST'])
 def calc():
@@ -54,5 +57,7 @@ def results():
         'on_support_strength_A': on_support_strength_A,
         'on_support_strength_B': on_support_strength_B
     }
+
+    context_values.append(context)
 
     return render_template('results.html', **context)
