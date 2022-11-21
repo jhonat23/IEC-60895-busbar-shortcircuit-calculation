@@ -51,6 +51,7 @@ def results():
     # print('estres mecánico: ', mech_stress)
 
     context = {
+        'project_title': project_title,
         'magnetic_force': magnetic_force,
         'mech_stress': mech_stress,
         'is_busbar_ok': is_busbar_ok,
