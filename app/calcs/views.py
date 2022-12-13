@@ -23,6 +23,8 @@ def results():
     calc_form = CalcForm()
 
     project_title = calc_form.project_title.data
+    system_voltage = calc_form.system_voltage.data
+    system_frecuency = calc_form.system_frecuency.data
     current = calc_form.shortcircuit_current.data
     support_distance = calc_form.support_distance.data
     phase_distance = calc_form.phase_distance.data
@@ -51,12 +53,17 @@ def results():
     # print('estres mecánico: ', mech_stress)
 
     context = {
+        # project data
         'project_title': project_title,
+        'system_voltage': system_voltage,
+        'system_frecuency': system_frecuency,
+        'shortcircuit_current': current,
+        # project calcs
         'magnetic_force': magnetic_force,
         'mech_stress': mech_stress,
-        'is_busbar_ok': is_busbar_ok,
         'on_support_strength_A': on_support_strength_A,
-        'on_support_strength_B': on_support_strength_B
+        'on_support_strength_B': on_support_strength_B,
+        'is_busbar_ok': is_busbar_ok
     }
 
     context_values.append(context)
