@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block body %}
     {{ super() }}
@@ -68,8 +69,16 @@
                 <h3>External supports strength: {{ on_support_strength_A }} N</h3>
             </div>
 
-            <form action="{{ url_for('calc') }}">
+            <br>
+
+            <form action="{{ url_for('calcs.calc') }}">
                 <button type="submit">Calculate other case</button>
+            </form>
+
+            <br>
+
+            <form action="{{ url_for('report.pdf_report') }}" method="POST">
+                <button type="submit">Generate report</button>
             </form>
 
             <br>

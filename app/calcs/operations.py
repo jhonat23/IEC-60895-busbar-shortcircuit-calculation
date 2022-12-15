@@ -9,7 +9,11 @@ CuR02 = 180 # MPa, elastic limit for cooper
 
 # Internal functions
 
-def _k1s(busbar_width: int, busbar_thickness: int, phase_distance: int) -> float:
+def _k1s(
+    busbar_width: int, 
+    busbar_thickness: int, 
+    phase_distance: int
+    ) -> float:
 
     """Returns factor k1s required for find equivalent phase distance. NOTE: the equation given from
     IEC 60895 that is used below in this function, is setting wrong values. So this function
@@ -46,22 +50,33 @@ def _k1s(busbar_width: int, busbar_thickness: int, phase_distance: int) -> float
 
     return ka
 
+
 def _span_factor(number_of_spans: str) -> dict:
+
     """Returns a span factor depending of the number of spans of arrangement"""
 
-    span_factors = {'alfa': {'A': 0, 'B':0}, 'beta': 0, 'gamma': 0}
+    span_factors = {
+        'alfa': {'A': 0, 'B':0}, 
+        'beta': 0, 
+        'gamma': 0
+        }
 
     if number_of_spans == '1':
+
         span_factors['alfa']['A'] = 0.5
         span_factors['alfa']['B'] = 0.5
         span_factors['beta'] = 1
         span_factors['gamma'] = 1.57
+
     elif number_of_spans == '2':
+
         span_factors['alfa']['A'] = 0.375
         span_factors['alfa']['B'] = 1.25
         span_factors['beta'] = 0.73
         span_factors['gamma'] = 2.45
+
     elif number_of_spans >= '3 or more':
+
         span_factors['alfa']['A'] = 0.4
         span_factors['alfa']['B'] = 1.1
         span_factors['beta'] = 0.73
@@ -69,7 +84,12 @@ def _span_factor(number_of_spans: str) -> dict:
 
     return span_factors
 
-def _Vf_Vr(mech_stress: float, R02: int) -> float:
+
+def _Vf_Vr(
+    mech_stress: float, 
+    R02: int
+    ) -> float:
+    
     """Returns factor VfxVr related with supports flexural strength"""
 
     factor = mech_stress / (0.8 * R02)
@@ -82,9 +102,15 @@ def _Vf_Vr(mech_stress: float, R02: int) -> float:
         return 1.0
 
 # Functions
-def face_type(facing_type: str, busbar_width: int, busbar_thickness: int) -> tuple:
+def face_type(
+    facing_type: str, 
+    busbar_width: int, 
+    busbar_thickness: int
+    ) -> tuple:
+
     """Returns a tuple of busbar width and thickness depending of facing type"""
 
+<<<<<<< HEAD:app/operations.py
     if facing_type == 'Witdh faced' or facing_type == 'N/A':
         return busbar_width, busbar_thickness
     elif facing_type == 'Thickness faced':
@@ -92,27 +118,65 @@ def face_type(facing_type: str, busbar_width: int, busbar_thickness: int) -> tup
         return busbar_width, busbar_thickness
     else:
         return 1, 1
+=======
+    if busbar_width and busbar_width is not None:
+>>>>>>> feat01:app/calcs/operations.py
 
-def magnetic_mid_force(current: int, support_distance: int, phase_distance: int) -> float:
+        if facing_type == 'Witdh faced' or facing_type == 'N/A':
+            return busbar_width, busbar_thickness
+
+        elif facing_type == 'Thickness faced':
+            busbar_width, busbar_thickness = busbar_thickness, busbar_width
+            return busbar_width, busbar_thickness
+
+    else:
+        return 1, 1
+
+
+def magnetic_mid_force(
+    current: int, 
+    support_distance: int, 
+    phase_distance: int
+    ) -> float:
+    
     """Calculates de the maximum theoric magnetic force on mid busbar on 3-phase shortcircuit"""
 
     # Magnetic force calculation
-    mf = (Uo / (2 * PI)) * (sqrt(3) / 2) * (current * 1000 * k * sqrt(2))**2 * (support_distance / phase_distance)
+    mf = ((Uo / (2 * PI)) * (sqrt(3) / 2) 
+    * (current * 1000 * k * sqrt(2))**2 
+    * (support_distance / phase_distance))
+
     result = round(mf, 2)
 
     return result
 
-def mechanical_stress(magnetic_force: float, support_distance: int, busbar_width: int, busbar_thickness: int, span_number: str) -> float:
-    """Calculates the busbar maximum mechanical stress. If mechanical stress is XXXXX the busbar arrangement cannot be installed"""
+
+def mechanical_stress(
+    magnetic_force: float, 
+    support_distance: int, 
+    busbar_width: int, 
+    busbar_thickness: int, 
+    span_number: str
+    ) -> float:
+    
+    """Calculates the busbar maximum mechanical stress. 
+    If mechanical stress is XXXXX the busbar arrangement cannot be installed"""
 
     span_factors = _span_factor(span_number)
-    ms = span_factors['beta'] * ((magnetic_force * support_distance) / (8 * ((2 * (busbar_width * busbar_thickness**3) / 12) / busbar_thickness)))
+
+    ms = (span_factors['beta'] 
+    * ((magnetic_force * support_distance) 
+    / (8 * ((2 * (busbar_width * busbar_thickness**3) / 12) 
+    / busbar_thickness))))
+
     result = round(ms, 2)
 
     return result
 
 def elastic_limit(mechanical_stress: float) -> str:
+
     """Show if a busbar arrangement accomplish with elastic limit"""
+
     limit = q * CuR02
 
     if mechanical_stress <= limit:
@@ -120,7 +184,11 @@ def elastic_limit(mechanical_stress: float) -> str:
     else:
         return 'NO, CHECK THE BUSBAR DESING'
 
-def support_flexural_strength(mech_stress: float, span_number: str, magnetic_force: float) -> dict:
+def support_flexural_strength(
+    mech_stress: float, span_number: str, 
+    magnetic_force: float
+    ) -> dict:
+
     """Returns the support flexural strength of external and internal supports of busbar arrangement"""
 
     supports_flex_strength = {}
@@ -137,9 +205,6 @@ if __name__ == '__main__':
     r = magnetic_mid_force(16, 1000, 200)
     #m = mechanical_stress(r, 1000, 60, 10)
     print(round(r, 2))
-
-    assert 3 == 2
-
 
     #-----------------------------------------------
 
