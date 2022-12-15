@@ -110,17 +110,7 @@ def face_type(
 
     """Returns a tuple of busbar width and thickness depending of facing type"""
 
-<<<<<<< HEAD:app/operations.py
-    if facing_type == 'Witdh faced' or facing_type == 'N/A':
-        return busbar_width, busbar_thickness
-    elif facing_type == 'Thickness faced':
-        busbar_width, busbar_thickness = busbar_thickness, busbar_width
-        return busbar_width, busbar_thickness
-    else:
-        return 1, 1
-=======
     if busbar_width and busbar_width is not None:
->>>>>>> feat01:app/calcs/operations.py
 
         if facing_type == 'Witdh faced' or facing_type == 'N/A':
             return busbar_width, busbar_thickness
