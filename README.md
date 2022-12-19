@@ -16,7 +16,7 @@ Notice firstly that most of constrains shown below are related with size and num
 - The shortcircuit peak current required to obtain the maximun strength is calculated using a k factor of 1.35 from R/X = 0.3 based on IEC60609
 - The effects of re-switching are not considered
 
-####[See report example](IEC-60895-busbar-shortcircuit-calculation/blob/main/app/report/samples/Success_Example_shortcircuit_report.pdf)
+####[See report example](app/report/samples/Success_Example_shortcircuit_report.pdf)
 
 If you have any questions about this app, please feel free to send a email: joosorio@utp.edu.co
 
