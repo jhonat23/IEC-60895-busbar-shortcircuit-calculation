@@ -11,8 +11,7 @@ doc_width, doc_heigth = A4
 def create_document(project_title: str) -> Canvas:
 
     rep = Canvas(
-        f"/home/jhonat23/Pyth/Flask/"\
-        f"IEC-60895-busbar-shortcircuit-calculation/app/report/samples/"\
+        f"app/report/samples/"\
         f"{project_title.replace(' ', '_')}_shortcircuit_report.pdf", 
         pagesize=A4,
         verbosity=1)
@@ -91,8 +90,7 @@ def create_report(data: dict, rep: Canvas) -> None:
     # -----------------------------Header----------------------------------
     # Image
     image = ImageReader(
-        '/home/jhonat23/Pyth/Flask/'\
-        'IEC-60895-busbar-shortcircuit-calculation/app/static/'\
+        'app/static/'\
         'images/Header.jpg'
         )
 
