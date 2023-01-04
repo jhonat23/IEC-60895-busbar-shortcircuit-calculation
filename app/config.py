@@ -1,4 +1,7 @@
-import secrets
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 class Config():
-    SECRET_KEY = secrets.token_hex(20)
+    SECRET_KEY = os.getenv('SECRET_KEY')
     UPLOAD_FOLDER = 'app/report/samples'
